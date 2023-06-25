@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gabriel Ferreira - Desenvolvedor de Software</title>
+    <style>
+        body {
+            font-family: 'Manrope';
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-image: linear-gradient(to right, rgb(19, 47, 129), rgb(116, 0, 104));
+            /* background-image: linear-gradient(to right, rgb(109, 138, 223), rgb(124, 11, 49)); */
+            /* background-color: #152e93; */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .profile-picture {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            margin: 30px auto;
+            background-image: url('src/images/profile.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 0;
+            font-weight: bolder;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 2s, tranform 2s;
+        }
+
+        .section.slide-in {
+            opacity: 1;
+            transition: opacity 2s, transform 2s;
+            transform: translateY(0);
+        }
+
+        .highlight {
+            background-color: #ffffff;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .about {
+            background-color: #f5f5f5;
+            padding: 30px;
+        }
+
+        .skills {
+            background-color: #ffffff;
+            padding: 30px;
+        }
+
+        .portfolio {
+            background-color: #f5f5f5;
+            padding: 30px;
+        }
+
+        .contact {
+            background-color: #ffffff;
+            padding: 30px;
+        }
+
+        footer {
+            /* background-image: linear-gradient(to right, rgb(109, 138, 223), rgb(126, 44, 118)); */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-image: linear-gradient(to right, rgb(109, 138, 223), rgb(126, 44, 118));
+            z-index: 999;
+            transition: top 0.3s;
+        }
+
+        .menu.sticky {
+            position: fixed;
+            top: 0;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu li {
+            padding: 30px;
+        }
+
+        .menu li:hover {
+            cursor: pointer;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .content-divs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .content-div {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            background-color: #2042ce;
+            margin: 50px;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon {
+            width: 36px;
+            height: 36px;
+            fill: #fff;
+            margin: 0 30px;
+        }
+
+        /* Estilos responsivos */
+        @media only screen and (max-width: 768px) {
+
+            /* Estilo para telas menores ou iguais a 768px */
+            .section {
+                min-height: auto;
+                padding: 50px 20px;
+            }
+
+            .content-divs {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .content-div {
+                width: calc(33.33% - 20px);
+                margin-bottom: 20px;
+            }
+
+            .menu {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+</head>
+
+<body>
+    <header class="header">
+        <div class="profile-picture"></div>
+        <h1>GABRIEL FERREIRA</h1>
+        <h2>Softare Developer</h2>
+        <div class="icon-container">
+            <a href="https://www.linkedin.com/in/gabriel-ferreira-31417590/" target="_blank">
+                <img src="src/icons/linkedin-48.png" alt="Linkedin" class="icon">
+            </a>
+            <a href="https://github.com/gabriel97felipe" target="_blank">
+                <img src="src/icons/github-48.png" alt="Github" class="icon">
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=5515981879090&text=Olá!%20Te%20achei%20pela%20sua%20página!" target="_blank">
+                <img src="src/icons/whatsapp-48.png" alt="Whatsapp" class="icon">
+            </a>
+            <a href="https://instagram.com/gabrielfnf_" target="_blank">
+                <img src="src/icons/instagram-48.png" alt="Instagram" class="icon">
+            </a>
+            <a href="https://www.facebook.com/gabriel97felipe/" target="_blank">
+                <img src="src/icons/facebook-48.png" alt="Facebook" class="icon">
+            </a>
+            <!-- Adicione mais ícones aqui -->
+        </div>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a class="menu-link" href="#highlight">Destaque</a></li>
+            <li><a class="menu-link" href="#about">Sobre Mim</a></li>
+            <li><a class="menu-link" href="#skills">Habilidades</a></li>
+            <li><a class="menu-link" href="#portfolio">Portfólio</a></li>
+            <li><a class="menu-link" href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="highlight" class="highlight section">
+        <h2>Destaque suas habilidades e experiências aqui</h2>
+        <p>Adicione um texto ou conteúdo relevante para capturar a atenção dos visitantes.</p>
+        <div class="content-divs">
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+        </div>
+    </section>
+
+    <section id="about" class="about section">
+        <h2>Sobre Mim</h2>
+        <p>Adicione uma descrição sobre você e sua experiência como desenvolvedor de software.</p>
+        <div class="content-divs">
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills section">
+        <h2>Habilidades</h2>
+        <p>Liste suas principais habilidades e tecnologias em destaque.</p>
+        <div class="content-divs">
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio section">
+        <h2>Portfólio de Projetos</h2>
+        <p>Destaque alguns dos seus projetos anteriores com descrições e links.</p>
+        <div class="content-divs">
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <h2>Contato</h2>
+        <p>Adicione um formulário de contato ou informações para que as pessoas possam entrar em contato com você.</p>
+        <div class="content-divs">
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+            <div class="content-div"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2023 Gabriel Ferreira. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Adicionar classe "sticky" ao menu quando a rolagem ultrapassar o cabeçalho
+        const body = document.querySelector('body');
+        setInterval(() => body.classList.add('slide-in'), 1);
+        const header = document.querySelector('header');
+        const menu = document.querySelector('nav');
+
+        function handleFixMenuOnHeader() {
+            if (window.pageYOffset > header.offsetHeight) {
+                menu.classList.add('sticky');
+                menu.offsetTop = header.offsetHeight;
+            } else {
+                menu.classList.remove('sticky');
+            }
+        }
+
+        function scrollToSection(event) {
+            event.preventDefault();
+            const target = event.target.getAttribute('href');
+            const section = document.querySelector(target);
+            window.scrollTo({
+                top: section.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', handleFixMenuOnHeader);
+        const menuLinks = document.querySelectorAll('.menu-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', scrollToSection);
+        });
+
+        function handleScroll() {
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                if ((sectionTop < windowHeight * 0.75) && sectionBottom > windowHeight * 0.75) {
+                    section.classList.add('slide-in');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+
+</html>
