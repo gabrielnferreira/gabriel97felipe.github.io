@@ -219,13 +219,6 @@
                 target="_blank">
                 <img src="src/icons/whatsapp-48.png" alt="Whatsapp" class="icon">
             </a>
-            <a href="https://instagram.com/gabrielfnf_" target="_blank">
-                <img src="src/icons/instagram-48.png" alt="Instagram" class="icon">
-            </a>
-            <a href="https://www.facebook.com/gabriel97felipe/" target="_blank">
-                <img src="src/icons/facebook-48.png" alt="Facebook" class="icon">
-            </a>
-            <!-- Adicione mais ícones aqui -->
         </div>
     </header>
 
@@ -290,26 +283,23 @@
     </section>
 
     <footer>
-        <p>© 2023 Gabriel Ferreira. Todos os direitos reservados.</p>
+        <p>© 2023 Gabriel Ferreira</p>
     </footer>
     <div id="scrollToTop"><img src="src/icons/scroll-top.png" alt="Top" class="icon"></div>
     <script>
-        // Adicionar classe "sticky" ao menu quando a rolagem ultrapassar o cabeçalho
-        const body = document.querySelector("body");
-        setInterval(() => body.classList.add("slide-in"), 1);
-        const header = document.querySelector("header");
-        const menu = document.querySelector("nav");
 
-        function handleStickMenuOnHeader() {
+        const handleStickMenuOnHeader = () => {
+            const nav = document.querySelector("nav");
+            const header = document.querySelector("header");
             if (window.pageYOffset > header.offsetHeight) {
-                menu.classList.add("sticky");
-                menu.offsetTop = header.offsetHeight;
+                nav.classList.add("sticky");
+                nav.offsetTop = header.offsetHeight;
             } else {
-                menu.classList.remove("sticky");
+                nav.classList.remove("sticky");
             }
         }
 
-        function scrollToSection(event) {
+        const handleScrollToSection = (event) => {
             event.preventDefault();
             const target = event.target.getAttribute("href");
             const section = document.querySelector(target);
@@ -319,13 +309,7 @@
             });
         }
 
-        window.addEventListener("scroll", handleStickMenuOnHeader);
-        const menuLinks = document.querySelectorAll(".menu-link");
-        menuLinks.forEach(link => {
-            link.addEventListener("click", scrollToSection);
-        });
-
-        function handleScroll() {
+        const handleInitSection = ()  => {
             const sections = document.querySelectorAll(".section");
 
             sections.forEach(section => {
@@ -339,27 +323,40 @@
             });
         }
 
-        window.addEventListener("scroll", handleScroll);
-        window.addEventListener("load", handleScroll);
-
-        window.addEventListener("scroll", handleScrollToTop);
-
-        function handleScrollToTop() {
-            var scrollToTopButton = document.getElementById("scrollToTop");
-
-            if (window.pageYOffset > header.offsetHeight) {
+        const handleScrollToTop = () => {
+            const scrollToTopButton = document.getElementById("scrollToTop");
+            const header = document.querySelector("header");
+            if (window.pageYOffset > header.offsetHeight - 100) {
                 scrollToTopButton.classList.add("show");
             } else {
                 scrollToTopButton.classList.remove("show");
             }
         }
 
-        function scrollToTop() {
+        const handleScrollToTopButton = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
-        const topButton = document.getElementById("scrollToTop");
-        topButton.addEventListener("click", scrollToTop);
+        const init = () => {
+            const body = document.querySelector("body");
+            setInterval(() => body.classList.add("slide-in"), 1);
+            window.addEventListener("scroll", handleStickMenuOnHeader);
+            
+            const menuLinks = document.querySelectorAll(".menu-link");
+            menuLinks.forEach(link => {
+                link.addEventListener("click", handleScrollToSection);
+            });
+
+            window.addEventListener("scroll", handleInitSection);
+            window.addEventListener("load", handleInitSection);
+
+            window.addEventListener("scroll", handleScrollToTop);
+
+            const topButton = document.getElementById("scrollToTop");
+            topButton.addEventListener("click", handleScrollToTopButton);
+        }
+
+        init();
     </script>
 </body>
 
