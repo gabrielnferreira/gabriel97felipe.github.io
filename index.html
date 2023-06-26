@@ -8,6 +8,7 @@
     <style>
         :root {
             --default-color: rgba(0,0,0,0.8);
+            --header-height: 500px;
         }   
 
         body {
@@ -26,10 +27,14 @@
             background-position: center;
             color: #fff;
             display: flex;
-            justify-content: left;
+            justify-content: center;
+            height: var(--header-height);
         }
 
         .header-content {
+            position: absolute;
+            top: 0;
+            height: var(--header-height);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -38,12 +43,15 @@
         }
 
         .profile-picture {
-            width: 70vh;
-            height: 50vh;
-            margin: 0 20px 0 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            margin: 0;
             background-image: url(src/images/profile.jpeg);
             background-size: cover;
             background-position: center;
+            opacity: 0.5;
         }
 
         h1,
